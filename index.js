@@ -9,6 +9,23 @@ const title = document.querySelector("title");
 const cityName = document.querySelector("h2");
 const main = document.querySelector("main");
 const table = document.querySelector("#table")
+const city = document.querySelector("#cities")
+const info = document.querySelector("h3")
+
+for (i = 0; i <= 38; i++) {
+    let div = document.createElement("div");
+    city.append(div);
+    div.setAttribute("class", "cityBox");
+    div.setAttribute("id", i);
+    div.textContent = cities[i].name;
+}
+
+for (i = 0; i <= 38; i++) {
+    if (whatCity == cities[i].name) {
+        document.getElementById(i).style.backgroundColor = "black";
+        document.getElementById(i).style.color = "white";
+    }
+}
 
 
 for (i = 0; i <= 38; i++) {
