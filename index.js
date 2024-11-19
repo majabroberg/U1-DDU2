@@ -13,9 +13,11 @@ const city = document.querySelector("#cities")
 const info = document.querySelector("h3")
 let foundCity = false;
 let id;
-
+let furthestId;
+let closestId;
 let furthest = distances[0].distance;
 let closest = distances[0].distance;
+
 
 //Cityboxes
 
@@ -25,6 +27,8 @@ for (i = 0; i <= 38; i++) {
     div.setAttribute("class", "cityBox");
     div.setAttribute("id", i);
     div.textContent = cities[i].name;
+
+
 }
 
 
@@ -53,12 +57,28 @@ for (const x of distances) {
     if (id === x.city1 || id === x.city2) {
         if (x.distance > furthest) {
             furthest = x.distance;
+            if (id === x.city1) {
+                furthestId = x.city2;
+            }
+            else {
+                furthestId = x.city1;
+            }
+
         }
         if (x.distance < closest) {
             closest = x.distance;
+            if (id === x.city1) {
+                closestId = x.city2;
+            }
+            else {
+                closestId = x.city1;
+            }
         }
     }
 }
+
+
+
 
 
 // Ändra text i h2
