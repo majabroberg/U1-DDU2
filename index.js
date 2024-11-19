@@ -13,6 +13,8 @@ const city = document.querySelector("#cities")
 const info = document.querySelector("h3")
 let foundCity = false;
 
+//Cityboxes
+
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
     city.append(div);
@@ -21,11 +23,14 @@ for (i = 0; i <= 38; i++) {
     div.textContent = cities[i].name;
 }
 
+// Gör det svart
+
 for (i = 0; i <= 38; i++) {
     if (whatCity == cities[i].name) {
         document.getElementById(i).style.backgroundColor = "black";
         document.getElementById(i).style.color = "white";
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
+        title.textContent = cities[i].name;
         foundCity = true;
     }
 }
@@ -33,8 +38,10 @@ for (i = 0; i <= 38; i++) {
 if (foundCity != true) {
     cityName.textContent = whatCity + " finns inte i databasen";
     info.textContent = "";
+    title.textContent = "Not Found";
 }
 
+// Ändra text i h2
 
 for (i = 0; i <= 38; i++) {
     if (whatCity == distances[i].name) {
@@ -45,24 +52,30 @@ for (i = 0; i <= 38; i++) {
     }
 }
 
+//Ta bort text i h3
+
 if (foundCity != true) {
     cityName.textContent = whatCity + " finns inte i databasen";
     info.textContent = "";
 }
 
-for (i = 0; i <= 38; i++) {
-    let div = document.createElement("div");
-    table.append(div);
-    div.setAttribute("class", "head_row")
-    div.setAttribute("class", "cell")
-    div.textContent = cities[i].id;
-}
+//Tabellen
 
 for (i = 0; i <= 38; i++) {
-    let div = document.createElement("div");
-    table.append(div);
-    div.setAttribute("class", "head_column")
-    div.setAttribute("class", "cell")
-    div.textContent = cities[i].id + "-" + cities[i].name;
+    let column = document.createElement("div");
+    table.append(column);
+    column.setAttribute("class", "cell")
+    column.textContent = cities[i].id + "-" + cities[i].name;
+
+    for (j = 0; j <= 38; j++) {
+        let row = document.createElement("div");
+        table.append(row);
+        row.setAttribute("class", "cell")
+        row.textContent = cities[i].id;
+
+    }
 }
+
+
+
 
