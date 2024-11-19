@@ -12,6 +12,10 @@ const table = document.querySelector("#table")
 const city = document.querySelector("#cities")
 const info = document.querySelector("h3")
 let foundCity = false;
+let id;
+
+let furthest = distances[0].distance;
+let closest = distances[0].distance;
 
 //Cityboxes
 
@@ -23,6 +27,7 @@ for (i = 0; i <= 38; i++) {
     div.textContent = cities[i].name;
 }
 
+
 // Gör det svart
 
 for (i = 0; i <= 38; i++) {
@@ -32,6 +37,7 @@ for (i = 0; i <= 38; i++) {
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
         title.textContent = cities[i].name;
         foundCity = true;
+        id = i;
     }
 }
 
@@ -40,6 +46,20 @@ if (foundCity != true) {
     info.textContent = "";
     title.textContent = "Not Found";
 }
+
+// Hitta stad närmast och längst bort
+
+for (const x of distances) {
+    if (id === x.city1 || id === x.city2) {
+        if (x.distance > furthest) {
+            furthest = x.distance;
+        }
+        if (x.distance < closest) {
+            closest = x.distance;
+        }
+    }
+}
+
 
 // Ändra text i h2
 
@@ -72,9 +92,9 @@ for (i = 0; i <= 38; i++) {
         table.append(row);
         row.setAttribute("class", "cell")
         row.textContent = cities[i].id;
-
     }
 }
+
 
 
 
