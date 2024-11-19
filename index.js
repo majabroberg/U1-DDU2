@@ -23,24 +23,17 @@ let furthest = distances[0].distance;
 let closest = distances[0].distance;
 
 
-//Cityboxes
-
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
     city.append(div);
     div.setAttribute("class", "cityBox");
     div.setAttribute("id", i);
     div.textContent = cities[i].name;
-
-
 }
-
-// Gör det svart
 
 for (i = 0; i <= 38; i++) {
     if (whatCity == cities[i].name) {
-        document.getElementById(i).style.backgroundColor = "black";
-        document.getElementById(i).style.color = "white";
+        document.getElementById(i).classList.add("target")
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
         title.textContent = cities[i].name;
         foundCity = true;
@@ -48,28 +41,18 @@ for (i = 0; i <= 38; i++) {
     }
 }
 
-if (foundCity != true) {
-    cityName.textContent = whatCity + " finns inte i databasen";
-    info.textContent = "";
-    title.textContent = "Not Found";
-}
-
-// Ändra text i h2
-
 for (i = 0; i <= 38; i++) {
     if (whatCity == distances[i].name) {
-        document.getElementById(i).style.backgroundColor = "black";
-        document.getElementById(i).style.color = "white";
+        document.getElementById(i).classList.add("target")
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
         foundCity = true;
     }
 }
 
-//
-
 if (foundCity != true) {
     cityName.textContent = whatCity + " finns inte i databasen";
     info.textContent = "";
+    title.textContent = "Not Found";
 }
 else {
     for (const x of distances) {
@@ -105,6 +88,15 @@ else {
     }
     spanClosest.textContent = closestName;
     spanFurthest.textContent = furthestName;
+
+    closest = closest / 10;
+    furthest = furthest / 10;
+
+    document.getElementById(closestId).textContent = closestName + " ligger " + closest + " mil bort "
+    document.getElementById(closestId).classList.add("closest")
+
+    document.getElementById(furthestId).textContent = furthestName + " ligger " + furthest + " mil bort "
+    document.getElementById(furthestId).classList.add("furthest")
 }
 
 //Tabellen
