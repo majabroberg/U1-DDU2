@@ -119,6 +119,35 @@ for (let i = 0; i < cities.length; i++) {
     create.classList.add("cell");
     create.classList.add("head_column");
 
+    if (i % 2 === 0) {
+        create.classList.add("even_row");
+    }
+
+    for (let j = 0; j < cities.length; j++) {
+        if (i === j) {
+            let create = document.createElement("div");
+            table.appendChild(create);
+            create.classList.add("cell");
+            if (i % 2 === 0) {
+                create.classList.add("even_row");
+            }
+            if (j % 2 === 0) {
+                create.classList.add("even_col");
+            }
+        } else {
+            let distance = getDistance(cities[i].id, cities[j].id);
+            let create = document.createElement("div");
+            table.appendChild(create);
+            create.textContent = distance;
+            create.classList.add("cell");
+            if (i % 2 === 0) {
+                create.classList.add("even_row");
+            }
+            if (j % 2 === 0) {
+                create.classList.add("even_col");
+            }
+        }
+    }
 }
 
 
