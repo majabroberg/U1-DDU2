@@ -94,7 +94,23 @@ else {
     document.getElementById(furthestId).classList.add("furthest")
 }
 
+let createFirstGrid = document.createElement("div");
+table.appendChild(createFirstGrid);
 
+let emptyCol = document.createElement("div");
+emptyCol.classList.add("cell");
+emptyCol.textContent = " ";
+emptyCol.style.height = "20px"
+createFirstGrid.append(emptyCol);
+
+for (let city of cities) {
+    let create = document.createElement("div");
+    table.appendChild(create);
+    create.textContent = city.id;
+    create.classList.add("cell");
+    create.classList.add("head_row");
+
+}
 
 
 
