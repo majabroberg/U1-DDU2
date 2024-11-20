@@ -23,17 +23,32 @@ body {
   border-radius: 5px;
 }
 
-#cities .target, #cities .closest, #cities .furthest { color: white }
-#cities .target { background-color: black; }
-#cities .closest { background-color: green;}
-#cities .furthest { background-color: blue; }
+#cities .target,
+#cities .closest,
+#cities .furthest {
+  color: white
+}
+
+#cities .target {
+  background-color: black;
+}
+
+#cities .closest {
+  background-color: green;
+}
+
+#cities .furthest {
+  background-color: blue;
+}
 
 h1 {
   text-align: center;
   margin: 20px 0;
 }
 
-h2, h3, p {
+h2,
+h3,
+p {
   text-align: center;
 }
 
@@ -78,7 +93,8 @@ main {
   text-align: center;
 }
 
-#table .head_row, #table .head_column {
+#table .head_row,
+#table .head_column {
   font-size: var(--fsz);
   font-weight: bold;
 }

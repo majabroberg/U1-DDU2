@@ -1,14 +1,16 @@
-// Recommended: All functions declared here
+function getDistance(cityId1, cityId2) {
+    for (let x of distances) {
+        if ((x.city1 === cityId1 && x.city2 === cityId2) ||
+            (x.city1 === cityId2 && x.city2 === cityId1)) {
+            return x.distance / 10;
+        }
+    }
+}
 
-// Recommended: constants with references to existing HTML-elements
-
-// Recommended: Ask for the city name and then the rest of the code
-
-let whatCity = prompt("Vilken stad?");
 const title = document.querySelector("title");
 const cityName = document.querySelector("h2");
 const main = document.querySelector("main");
-const table = document.querySelector("#table")
+const table = document.querySelector("#table");
 const city = document.querySelector("#cities")
 const info = document.querySelector("h3")
 const spanClosest = document.getElementById("closest")
@@ -21,9 +23,11 @@ let furthestName;
 let closestName;
 let furthest = distances[0].distance;
 let closest = distances[0].distance;
+let whatCity = prompt("Vilken stad?");
 
 
-for (i = 0; i <= 38; i++) {
+
+for (i = 0; i < cities.length; i++) {
     let div = document.createElement("div");
     city.append(div);
     div.setAttribute("class", "cityBox");
@@ -31,7 +35,7 @@ for (i = 0; i <= 38; i++) {
     div.textContent = cities[i].name;
 }
 
-for (i = 0; i <= 38; i++) {
+for (i = 0; i < cities.length; i++) {
     if (whatCity == cities[i].name) {
         document.getElementById(i).classList.add("target")
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
@@ -41,7 +45,7 @@ for (i = 0; i <= 38; i++) {
     }
 }
 
-for (i = 0; i <= 38; i++) {
+for (i = 0; i < cities.length; i++) {
     if (whatCity == distances[i].name) {
         document.getElementById(i).classList.add("target")
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
@@ -97,22 +101,6 @@ else {
 
     document.getElementById(furthestId).textContent = furthestName + " ligger " + furthest + " mil bort "
     document.getElementById(furthestId).classList.add("furthest")
-}
-
-//Tabellen
-
-for (i = 0; i <= 38; i++) {
-    let column = document.createElement("div");
-    table.append(column);
-    column.setAttribute("class", "cell")
-    column.textContent = cities[i].id + "-" + cities[i].name;
-
-    for (j = 0; j <= 38; j++) {
-        let row = document.createElement("div");
-        table.append(row);
-        row.setAttribute("class", "cell")
-        row.textContent = cities[i].id;
-    }
 }
 
 
