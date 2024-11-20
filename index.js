@@ -1,8 +1,8 @@
 function getDistance(cityId1, cityId2) {
-    for (let x of distances) {
-        if ((x.city1 === cityId1 && x.city2 === cityId2) ||
-            (x.city1 === cityId2 && x.city2 === cityId1)) {
-            return x.distance / 10;
+    for (let space of distances) {
+        if ((space.city1 === cityId1 && space.city2 === cityId2) ||
+            (space.city1 === cityId2 && space.city2 === cityId1)) {
+            return space.distance / 10;
         }
     }
 }
@@ -26,7 +26,6 @@ let closest = distances[0].distance;
 let whatCity = prompt("Vilken stad?");
 
 
-
 for (i = 0; i < cities.length; i++) {
     let div = document.createElement("div");
     city.append(div);
@@ -45,48 +44,40 @@ for (i = 0; i < cities.length; i++) {
     }
 }
 
-for (i = 0; i < cities.length; i++) {
-    if (whatCity == distances[i].name) {
-        document.getElementById(i).classList.add("target")
-        cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
-        foundCity = true;
-    }
-}
-
 if (foundCity != true) {
     cityName.textContent = whatCity + " finns inte i databasen";
     info.textContent = "";
     title.textContent = "Not Found";
 }
 else {
-    for (const x of distances) {
-        if (id === x.city1 || id === x.city2) {
-            if (x.distance > furthest) {
-                furthest = x.distance;
-                if (id === x.city1) {
-                    furthestId = x.city2;
+    for (const sameId of distances) {
+        if (id === sameId.city1 || id === sameId.city2) {
+            if (sameId.distance > furthest) {
+                furthest = sameId.distance;
+                if (id === sameId.city1) {
+                    furthestId = sameId.city2;
                 }
                 else {
-                    furthestId = x.city1;
+                    furthestId = sameId.city1;
                 }
 
             }
-            if (x.distance < closest) {
-                closest = x.distance;
-                if (id === x.city1) {
-                    closestId = x.city2;
+            if (sameId.distance < closest) {
+                closest = sameId.distance;
+                if (id === sameId.city1) {
+                    closestId = sameId.city2;
                 }
                 else {
-                    closestId = x.city1;
+                    closestId = sameId.city1;
                 }
             }
         }
-        for (const x of cities) {
-            if (closestId == x.id) {
-                closestName = x.name;
+        for (const findName of cities) {
+            if (closestId == findName.id) {
+                closestName = findName.name;
             }
-            if (furthestId == x.id) {
-                furthestName = x.name;
+            if (furthestId == findName.id) {
+                furthestName = findName.name;
             }
         }
     }
