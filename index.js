@@ -111,6 +111,15 @@ for (let city of cities) {
     create.classList.add("head_row");
 
 }
+for (let i = 0; i < cities.length; i++) {
+    let city = cities[i];
+    let create = document.createElement("div");
+    table.appendChild(create);
+    create.textContent = city.id + "-" + city.name;
+    create.classList.add("cell");
+    create.classList.add("head_column");
+
+}
 
 
 
