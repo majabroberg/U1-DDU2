@@ -25,9 +25,6 @@ let furthest = distances[0].distance;
 let closest = distances[0].distance;
 let whatCity = prompt("Vilken stad?");
 
-console.log(furthest)
-console.log(closest)
-
 for (i = 0; i < cities.length; i++) {
     let div = document.createElement("div");
     city.append(div);
